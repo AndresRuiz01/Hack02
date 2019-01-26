@@ -29,17 +29,22 @@ int main(int argc, char **argv) {
 
   conv = (piValue / 180);
 
+  // Distance formula :
   {
-    distance = (acos(((sin(latitude1 * conv)) * (sin(latitude2 * conv))) 
+    distance = (acos(((sin(latitude1 * conv)) * (sin(latitude2 * conv)))
     + ((cos(latitude1 * conv)) * (cos(latitude2 * conv)) * (cos(longitudeDifference * conv))))) * radiusEarth;
   }
 
+  if (latitude1 > 90 || latitude2 > 90 || longitude1 > 90 || longitude2 > 90) {
+    printf("Latitude and Longitude should be between -90 and 90");
+}
+  else {
 
   printf("Location Distance\n");
-  printf("===========================\n");
+  printf("========================\n");
   printf("Origin:      (%lf, %lf)\n", latitude1, longitude1);
   printf("Destination: (%lf, %lf)\n", latitude2, longitude2);
   printf("Air distance is %lf kms\n", distance);
-
+}
   return 0;
 }
